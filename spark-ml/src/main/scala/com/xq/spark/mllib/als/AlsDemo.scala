@@ -61,7 +61,7 @@ object AlsDemo {
         training.show()
         test.show()
 
-        // 在训练集上面使用ALS算法构建推理模型
+        // 在训练集上面使用ALS算法构建推理模型  Estimator
         val als = new ALS()
         als.setRank(rank.toInt)
         als.setMaxIter(maxIter.toInt)
@@ -76,8 +76,7 @@ object AlsDemo {
         // extractParamMap方法提取当前使用的参数列表
         println("提取参数：")
         println(als.extractParamMap())
-
-        // 训练模型
+        // 训练模型 transformer
         val model = als.fit(training)
         // 在测试集上面计算模型的均方根误差（RMSE）, 为了防止计算出来的是NAN，指定冷启动策略
         model.setColdStartStrategy("drop")
